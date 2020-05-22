@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	{{.title}}
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link type="text/css" rel="stylesheet" href="static/css/core.css">
+	<link type="text/css" rel="stylesheet" href="static/css/icon.css">
+	<link type="text/css" rel="stylesheet" href="static/css/home.css">
+</head>
+<body>
+<!-- head YDC begin -->
+	<header class="ydc-header">
+		<div class="ydc-entered">
+			<div class="ydc-header-content ydc-flex">
+				<div class="ydc-column">
+					<a href="index.html" class="ydc-column-ydc-logo">
+						<img src="static/img/ydc-logo.png" title="" about="" alt="">
+					</a>
+				</div>
+				<div class="ydc-column">
+					<div class="ydc-column-user">
+						<div class="ydc-user-photo">
+							<a href="javascript:;">
+								<img src="static/img/photo.png" title="" about="" alt="">
+							</a>
+						</div>
+						<div class="ydc-user-info">
+							<div class="ydc-user-info-name">
+								<a href="javascript:;">{{.username}}</a>
+							</div>
+							<div class="ydc-user-info-func ydc-flex">
+								<a href="/logout">退出</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+<!-- head YDC end -->
+
+<!-- content YDC begin -->
+	<section>
+		<div class="ydc-content-slide ydc-body">
+			<div class="ydc-flex">
+				<!-- left begin -->
+				<div class="ydc-column ydc-column-2">
+					<div class="ydc-menu">
+						<ul>
+							<li class="ydc-menu-item">
+								<ul>
+                                    <li>
+                                        <a href="/article.html" {{if compare .RouterPattern "/article"}}class="active"{{end}}>文章列表</a>
+                                    </li>
+									<li>
+										<a href="/addarticle.html" {{if compare .RouterPattern "/addarticle"}}class="active"{{end}}>添加文章</a>
+									</li>
+									<li>
+										<a href="/addtype.html" {{if compare .RouterPattern "/addtype"}}class="active"{{end}}>添加分类</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- left end -->
+				<!-- right begin -->
+				<div class="ydc-column ydc-column-8">
+					{{.LayoutContent}}
+				</div>
+				<!-- right end -->
+			</div>
+		</div>
+
+		<div class="ydc-footer">
+			<div>
+				<p>©2018 一点车版权所有About 公司简介  联系方法  招聘信息  客户服务  隐私政策  广告服务  网站地图  意见反馈  不良信息举报</p>
+			</div>
+		</div>
+	</section>
+<!-- content YDC end -->
+	<script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/static/js/nicEdit.js"></script>
+    <script type="text/javascript" src="/static/js/upImg.js"></script>
+</body>
+</html>
+<script>
+    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });//编辑器
+    function textLimitCheck(thisArea, maxLength){
+        if (thisArea.value.length > maxLength){
+            alert(maxLength + ' 个字限制. \r超出的将自动清除.');
+            thisArea.value = thisArea.value.substring(0, 30);
+            thisArea.focus();    }
+        messageCount.innerText = thisArea.value.length;
+        messageCount1.innerText = thisArea.value.length;
+        messageCount2.innerText = thisArea.value.length;
+    }//标题输入框字数限制
+</script>

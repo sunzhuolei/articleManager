@@ -1,0 +1,89 @@
+<div class="ydc-entered-box">
+	<div class="ydc-content-right">
+		<!-- gongGao begin -->
+		<div class="ydc-loading-box">
+			<div class="ydc-tabPanel">
+				<div class="ydc-panes">
+					<div class="ydc-pane" style="display:block;">
+						<ol class="ydc-pane-list">
+							{{range .articles}}
+							<li>
+								<a href="/detail.html?id={{.Id}}" target="_blank">{{.Title}}</a>
+								<a href="/update.html?id={{.Id}}" target="_blank" style="margin-left: 20px;">[修改]</a>
+								<span>{{.Addtime | FormatTime}}</span>
+							</li>
+							{{end}}
+						</ol>
+						<div class="ydc-pagination">
+							<ol>
+								{{if .isFirstPage}}
+									<li class="ydc-previous-item">
+										<button class="ydc-previous-item-btn-medium ydc-disabled">
+											<span>上一页</span>
+										</button>
+									</li>
+								{{else}}
+									<li class="ydc-previous-item" onclick="prevPage({{.curpage}})">
+										<button class="ydc-previous-item-btn-medium">
+											<span>上一页</span>
+										</button>
+									</li>
+								{{end}}
+								{{$curpage := .curpage}}
+								{{range $key,$val := .pageslice}}
+									<li onclick="redirectPage({{$val}})">
+										<button class="ydc-previous-item-btn-medium {{if compare $val $curpage}}cur{{end}}">{{$val}}</button>
+									</li>
+								{{end}}
+								{{if .isLastPage}}
+									<li class="ydc-previous-item">
+										<button class="ydc-previous-item-btn-medium ydc-disabled">
+											<span>下一页</span>
+										</button>
+									</li>
+								{{else}}
+									<li class="ydc-previous-item" onclick="nextPage({{.curpage}})">
+										<button class="ydc-previous-item-btn-medium">
+											<span>下一页</span>
+										</button>
+									</li>
+								{{end}}
+								<li class="ydc-item-quick">
+									第<div class="ydc-item-quick-kun"><input type="number" aria-invalid="false" class="" id="jump"></div>页
+									<button style="margin-left:5px;" class="ydc-previous-item-btn-medium" onclick="jumpToPage()">
+										<span>跳转</span>
+									</button>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- gongGao End -->
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	function prevPage(page){
+		var newpage = page -1
+		window.location.href = "/article?page="+newpage
+	}
+
+    function nextPage(page){
+        var newpage = page +1
+        window.location.href = "/article?page="+newpage
+    }
+
+    function redirectPage(page){
+        window.location.href = "/article?page="+page
+    }
+
+    function jumpToPage(){
+        var page = parseInt($("#jump").val());
+        if (page >0){
+            window.location.href = "/article?page="+page
+        }
+    }
+</script>

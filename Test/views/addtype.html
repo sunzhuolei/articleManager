@@ -1,0 +1,27 @@
+<div class="ydc-release-content">
+    <div class="ydc-tabPanel ydc-tabPanel-release">
+        <div class="ydc-release-tab-head">
+            <ul>
+                <li class="hit">添加分类</li>
+            </ul>
+        </div>
+        <div class="ydc-panes">
+            <form method="post" action="/addtype">
+            <div class="ydc-pane" style="display:block;">
+                <div class="ydc-release-form-group ">
+                    <div class="ydc-release-form-group-input">
+                        <input type="text" class="ydc-form-control" name="type" title="" placeholder="请输入分类名称，建议分类名称字数在30个汉字以内" onkeyUp="textLimitCheck(this, 30);" id="title">
+                        <div class="ydc-form-group-jl">
+                            <span id="messageCount">0</span>
+                            /30
+                        </div>
+                    </div>
+                </div>
+                    <div class="ydc-btn">
+                        <button class="btn" type="submit">添加</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
